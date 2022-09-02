@@ -5,12 +5,12 @@ const { google } = require("googleapis");
 const { request } = require('http');
 var bodyParser = require('body-parser');
 const app = express();              
-const port = 8080;                  
+const port = 5000;                  
 
+app.set('port', process.env.PORT || 5000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.set('port', process.env.PORT || port);
 
 
 app.use(bodyParser.json({limit: '50mb'}));
