@@ -10,6 +10,7 @@ const port = 8080;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', process.env.PORT || port);
 
 
 app.use(bodyParser.json({limit: '50mb'}));
