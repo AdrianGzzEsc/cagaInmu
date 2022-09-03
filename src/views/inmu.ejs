@@ -13,8 +13,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/css/style.css">
 
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  
+
     <link rel="stylesheet" href="https://unpkg.com/accordion-js@3.3.1/dist/accordion.min.css" />
 
     <script src='https://unpkg.com/accordion-js@3.3.1/dist/accordion.min.js'></script>
@@ -55,7 +55,7 @@
                             aria-controls="nav-casa" aria-selected="false">Detalles Casa</a>
                         <a class="nav-link" id="nav-depa-tab" data-bs-toggle="tab" href="#nav-depa" role="tab"
                             aria-controls="nav-depa" aria-selected="false">Detalles Depa</a>
-                  
+
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -68,18 +68,20 @@
 
                     </div>
                     <div class="tab-pane fade" id="nav-depa" role="tabpanel" aria-labelledby="nav-depa-tab">
-                        
+
                         <%- include ("./templates/depa") %>
 
                     </div>
-                
+
                 </div>
             </div>
-            <div id="preview" class="col-4 card ml-5" style="max-height: 700px;background-color: rgba(255,255,255,0.8);padding: 0px;">
+            <div id="preview" class="col-4 card ml-5"
+                style="max-height: 700px;background-color: rgba(255,255,255,0.8);padding: 0px;max-width: 405px;">
 
             </div>
         </div>
-        <a id="crear" style="right:5px;background-color: #e3f977;font-family: inmu;border-color: black;" class="col-6 btn btn-primary mt-2">Crear</a>
+        <a id="crear" style="right:5px;background-color: #e3f977;font-family: inmu;border-color: black;"
+            class="col-6 btn btn-primary mt-2">Crear</a>
 
         <br>
         <br>
@@ -96,11 +98,28 @@
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
+    array = ["1", "2", "3", "5"]
+    console.log()
 
     var contactTemplate = ` <%- include ("./templates/contactTemplate") %> `
     var formTemplate = ` <%- include ("./templates/swiperTemplate") %> `
     var formTemplate2 = ` <%- include ("./templates/planosTemplate") %> `
 
+    var dataFinal = { map_id: 1, 
+        infoopen: 0, 
+        approved: 1, 
+        retina: 0, 
+        type: 0, did: "", 
+        sticky: 0, 
+        other_data: 'a:2:{s:10:"hover_icon";s:69:"//inmu.mx/wp-content/plugins/wp-google-maps/images/spotlight-poi2.png";s:12:"hover_retina";s:1:"0";}',
+        layergroup: 0,
+        lat: "",
+        pic: "",
+        link: "",
+        icon:"",
+        lng: "",
+        did: "",
+    }
 
     $(document).on('click', '.acContactar', function (e) {
         $('.ac-trigger').each(function () {
@@ -130,7 +149,7 @@
 
         var index = $(this).closest('[name = materiales]').index('[name = materiales]')
         if (duration[index] != undefined)
-            duration.splice(index,1)
+            duration.splice(index, 1)
     });
 
     $(document).on('click', '#mas2', function () {
@@ -172,17 +191,16 @@
         $('[name = linkSwipper]').each(async function () {
             index = $(this).index('[name = linkSwipper]')
             if ($(this).val().includes('mp4')) {
-                template += '<div class="swiper-slide" data-swiper-autoplay="' + duration[index] + '"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '" data-thumbnail="' + $(this).val() + '"><video class="wpgmza-embedded-media" src="' + $(this).val() + '"></a></div>'
+                template += '<div class="swiper-slide" data-swiper-autoplay="' + duration[index] + '"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '"><video class="wpgmza-embedded-media" src="' + $(this).val() + '"></video></a></div>'
             } else {
-                template += '<div class="swiper-slide"><a class="wplightbox" data-group="gallery0"  href="' + $(this).val() + '" data-thumbnail="' + $(this).val() + '"><img class="wpgmza-embedded-media" src="' + $(this).val() + '"></a></div>'
+                template += '<div class="swiper-slide"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '" data-thumbnail="' + $(this).val() + '"><img class="wpgmza-embedded-media" src="' + $(this).val() + '"></a></div>'
             }
         })
 
-        template += '</div> <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div>'
+        template += '</div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div>'
         if ($('#nav-casa-tab').hasClass('active')) {
             var casaCat = ["1", "9", "25", "10"]
             categorias.push("1")
-
 
             $('#nav-casa').find('[name = amenidad]').each(function () {
                 if ($(this).is(":checked"))
@@ -190,24 +208,42 @@
             })
             if (!multipleExist(casaCat, categorias))
                 categorias.push("11")
+            //data final
+            dataFinal.category = String(categorias).replace(/[|"|]|/g, "")
+            dataFinal.baños = $('#nav-casa').find('[name = baños]').val()
+            dataFinal.metros=  $('#nav-casa').find('[name = metros]').val()
+            dataFinal.habitaciones = $('#nav-casa').find('[name = habitaciones]').val()
+            dataFinal.estacionamiento = $('#nav-casa').find('[name = estacionamiento]').val()
+            dataFinal.precioMuestra = $('#nav-casa').find('[name = precioRango]').val()
+            dataFinal.precio = $('#nav-casa').find('[name = precio]').val()
+            dataFinal.titulo = $('#nav-casa').find('[name = titulo]').val()
+            dataFinal.direccion = $('#nav-casa').find('[name = direccion]').val()
+            dataFinal.detalles = $('#nav-casa').find('[name = detalles]').val()
 
+            //
             data.categorias = categorias
             data.recorrido = $('#nav-casa').find('[name = recorrido]').val()
             data.precio = $('#nav-casa').find('[name = precioRango]').val()
             data.descripcion = $('#nav-casa').find('[name = descripcion]').val()
 
             data.customFields = []
-            if ($('#nav-casa').find('[name = detalles]').val() != "")
-                data.customFields.push({ name: "Descripcion", value: $('#nav-casa').find('[name = detalles]').val() })
-            
-                if ($('#nav-casa').find('[name = precioRango]').val() != "")
-            data.customFields[1] = { name: "Precio", value: $('#nav-casa').find('[name = precioRango]').val() }
+      
+
+            if ($('#nav-casa').find('[name = precioRango]').val() != "")
+                data.customFields.push({ name: "Precio", value: $('#nav-casa').find('[name = precioRango]').val() })
             else return alert('Falta Precio')
 
-            data.customFields[2] = { name: "Metros", value: $('#nav-casa').find('[name = metros]').val() }
-            data.customFields[3] = { name: "Estacionamiento", value: $('#nav-casa').find('[name = estacionamiento]').val() }
-            data.customFields[4] = { name: "Habitaciones", value: $('#nav-casa').find('[name = habitaciones]').val() }
-            data.customFields[5] = { name: "Baños", value: $('#nav-casa').find('[name = baños]').val() }
+            data.customFields.push({ name: "Metros", value: $('#nav-casa').find('[name = metros]').val() })
+            data.customFields.push( { name: "Estacionamiento", value: $('#nav-casa').find('[name = estacionamiento]').val() })
+            data.customFields.push( { name: "Habitaciones", value: $('#nav-casa').find('[name = habitaciones]').val() })
+            data.customFields.push( { name: "Baños", value: $('#nav-casa').find('[name = baños]').val() })
+            data.customFields.push( { name: "Antiguedad", value: $('#nav-casa').find('[name = antiguedad]').val() })
+            data.customFields.push( { name: "Pisos", value: $('#nav-casa').find('[name = pisos]').val() })
+
+
+            if ($('#nav-casa').find('[name = detalles]').val() != "")
+                data.customFields.push({ name: "Descripcion", value: $('#nav-casa').find('[name = detalles]').val() })
+
 
         } else if ($('#nav-depa-tab').hasClass('active')) {
             categorias.push("2")
@@ -238,35 +274,35 @@
         if (data.recorrido != "")
             template += '<div id="iframeLoad"><a href="' + data.recorrido + '" class="wplightbox">RECORRIDO VIRTUAL</a></div>'
 
-            template += '<div id="precioINMU" style = "text-align: center;font-family: inmu;font-size: 32px;" ></div>'
-   
+        template += '<div id="precioINMU" style="text-align: center;font-family: inmu;font-size: 32px;"></div>'
 
+        //Accordion detalles propiedad
         template += '<div class="accordion-container scrollableC"><div class="ac"><h2 class="ac-header"> <button type="button" class="ac-trigger">Detalles del Inmueble</button></h2><div class="ac-panel"><div class="ac-text"></div></div></div>'
 
-
+        //Accordion Contacto
         template += '<div class="ac acCustom"><h2 class="ac-header"> <button type="button" class="ac-trigger acContactar">Contactar</button></h2><div class="ac-panel"><div class="ac-text" id="contactForm">Contactar</div></div></div></div>'
+
+        dataFinal.descripcion = template
 
         $('#preview').html(template)
 
-
-
         var iconos = ''
-        if (data.customFields.filter(e => e.name === 'Descripcion').length > 0) {
-            iconos += '<div name="inmuDescripcion">' + data.customFields[0].value + '</div>'
-            data.customFields.splice(0, 1)
-
-        }
+     
         $('#precioINMU').html(data.customFields.filter(e => e.name === 'Precio')[0].value)
-            data.customFields.splice(0, 1)
-         
-        
-       
+        data.customFields.splice(0, 1)
+
+
+
 
         iconos += '<div class="row ml-3" style="justify-content: space-between;">'
-        for (var i = 0; i < data.customFields.length; i++) {
-            iconos += '<div style ="width: 120px !important;" class= "row mt-2 pt-1 pb-1" ><div class="col-3" style="display: flex; align-items: center;"> <i style ="height: 35px;width:35px;margin-top:-2px" class ="inmu' + data.customFields[i].name + '"></i></div><div class="col-3 ml-3" style="display: flex; align-items: center;">' + data.customFields[i].value + '</div></div>'
+        for (var i = 0; i < data.customFields.length-1; i++) {
+            iconos += '<div style ="width: 120px !important;" class= "row mt-2 pt-1 pb-1" ><div class="col-3" style="display: flex; align-items: center;"> <i style ="height: 35px;width:35px;margin-top:-2px" class ="inmu' + data.customFields[i].name + '"></i><p class = "nombreIconos">'+data.customFields[i].name+'</p></div><div class="col-3 ml-3" style="display: flex; align-items: center;font-family: inmu;">' + data.customFields[i].value + '</div></div>'
         }
         iconos += "</div>"
+        if (data.customFields.filter(e => e.name === 'Descripcion').length > 0) {
+            iconos += '<div name="inmuDescripcion">' + data.customFields[data.customFields.length - 1].value + '</div>'
+            data.customFields.pop()
+        }
         $('.ac-text').eq(0).append(iconos)
 
         $('#contactForm').html(contactTemplate)
@@ -304,29 +340,29 @@
 
         console.log(template)
         console.log(data)
-/*
-        fetch("/", {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {
-                    'Content-Type': 'application/json'
-                }
-                }).then(response => {
-                    if (response.ok) {
-
-                        return response.json();
-                    }
-                    throw new Error(response.statusText);
-                })
-                .then(responseJSON => {
-
-                    window.location.href = "/ordenes-compra/"
-                })
-                .catch(err => {
-
-                    alert(err.message)
-                })
-                */
+        
+                fetch("/", {
+                            method: "POST",
+                            body: JSON.stringify(dataFinal),
+                            headers: {
+                            'Content-Type': 'application/json'
+                        }
+                        }).then(response => {
+                            if (response.ok) {
+        
+                                return response.json();
+                            }
+                            throw new Error(response.statusText);
+                        })
+                        .then(responseJSON => {
+        
+                            window.location.href = "/ordenes-compra/"
+                        })
+                        .catch(err => {
+        
+                            alert(err.message)
+                        })
+                        
     });
 
 

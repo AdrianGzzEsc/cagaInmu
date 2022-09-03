@@ -1,115 +1,123 @@
 <br>
-                        <div class="card">
-                            <label for="opciones" class="ml-3 mt-2" style="font-weight: bold;"
-                                class="mt-3 ">Opciones:</label>
-
-                            <div class="row ml-4 mb-2">
-
-                                <div class="form-check col">
-                                    <input class="form-check-input" type="checkbox" value="9" id="venta"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Venta
-                                    </label>
-                                </div>
-                                <div class="form-check col">
-                                    <input class="form-check-input" type="checkbox" value="25" id="preventa"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Preventa
-                                    </label>
-                                </div>
-                                <div class="form-check col">
-                                    <input class="form-check-input" type="checkbox" value="10" id="renta"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Renta
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="precioRango" class="mt-3 ">Precio (El que se Muestra):</label>
-                                <input class="form-control col" type="text" name="precioRango"
-                                    placeholder="ej. 15,500,500 - 25,000,00" required>
-                            </div>
-                            <div class="col">
-                                <label for="precio" class="mt-3 ">Precio (Minimo para Filtrar):</label>
-                                <input class="form-control col" type="number" name="precio" placeholder="ej. 15500500"
-                                    required>
-                            </div>
-                        </div>
-                        <p class="mt-2" style="color: gray;"> NOTA: Si no tiene rango poner el mismo en los dos.
-                            Usar
-                            comas en el que se muestra</p>
-
-                        <label for="recorrido" class="mt-3">Link Recorrido Virtual:</label>
-                        <input class="form-control" type="text" name="recorrido" required>
-                        <label for="detalles" class="mt-3">Detalles (Storytelling):</label>
-                        <textarea class="form-control" type="text" name="detalles" required> </textarea>
+<label for="titulo" class="mt-3 ">Nombre de Propiedad</label>
+<input class="form-control" type="text" name="titulo" required>
+<label for="titulo" class="mt-3 ">Dirección:</label>
+<input class="form-control" type="text" name="direccion" placeholder ="(Calle) (Numero), (Colonia)"required>
+<div class="card mt-3">
 
 
-                        <div class="row">
-                            <div class="col mt-3">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="inmuMetros"
-                                                style="height: 35px; width: 35px;"></i></span> </span>
-                                    </div>
-                                    <input style="height: auto;" class="form-control col-6" type="number" name="metros"
-                                        required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="inmuEstacionamiento"
-                                                style="height: 35px; width: 35px;"></i></span> </span>
-                                    </div>
-                                    <input style="height: auto;" class="form-control col-6" type="number"
-                                        name="estacionamiento" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="inmuHabitaciones"
-                                                style="height: 35px; width: 35px;"></i></span> </span>
-                                    </div>
-                                    <input style="height: auto;" class="form-control col-6" type="number"
-                                        name="habitaciones" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="inmuBaños"
-                                                style="height: 35px; width: 35px;"></i></span> </span>
-                                    </div>
-                                    <input style="height: auto;" class="form-control col-6" type="number" name="baños"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="col mt-3 mr-3 card" name="amenidades">
-                                <label for="amenidades" style="font-weight: bold;" class="mt-3 ">Amenidades:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="22" id="alberca"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Alberca
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="24" id="gimnasio"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Patio
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="23" id="terraza"
-                                        name="amenidad">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Terraza
-                                    </label>
-                                </div>
+    <label for="opciones" class="ml-3 mt-2" style="font-weight: bold;" class="mt-3 ">Opciones:</label>
+
+    <div class="row ml-4 mb-2">
+
+        <div class="form-check col">
+            <input class="form-check-input" type="checkbox" value="9" id="venta" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Venta
+            </label>
+        </div>
+        <div class="form-check col">
+            <input class="form-check-input" type="checkbox" value="25" id="preventa" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Preventa
+            </label>
+        </div>
+        <div class="form-check col">
+            <input class="form-check-input" type="checkbox" value="10" id="renta" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Renta
+            </label>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col">
+        <label for="precioRango" class="mt-3 ">Precio (El que se Muestra):</label>
+        <input class="form-control col" type="text" name="precioRango" placeholder="ej. 15,500,500 - 25,000,00"
+            required>
+    </div>
+    <div class="col">
+        <label for="precio" class="mt-3 ">Precio (Minimo para Filtrar):</label>
+        <input class="form-control col" type="number" name="precio" placeholder="ej. 15500500" required>
+    </div>
+</div>
+<p class="mt-2" style="color: gray;"> NOTA: Si no tiene rango poner el mismo en los dos.
+    Usar
+    comas en el que se muestra</p>
+
+<label for="recorrido" class="mt-3">Link Recorrido Virtual:</label>
+<input class="form-control" type="text" name="recorrido" required>
+<label for="detalles" class="mt-3">Detalles (Storytelling):</label>
+<textarea class="form-control" type="text" name="detalles" required> </textarea>
 
 
-                            </div>
-                        </div>
+<div class="row">
+    <div class="col mt-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuMetros"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="metros" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuEstacionamiento"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="estacionamiento" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuHabitaciones"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="habitaciones" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuBaños"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="baños" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuPisos"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="pisos" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuAntiguedad"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="antiguedad" required>
+        </div>
+    </div>
+    <div class="col mt-3 mr-3 card" name="amenidades">
+        <label for="amenidades" style="font-weight: bold;" class="mt-3 ">Amenidades:</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="22" id="alberca" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Alberca
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="24" id="gimnasio" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Patio
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="23" id="terraza" name="amenidad">
+            <label class="form-check-label" for="flexCheckDefault">
+                Terraza
+            </label>
+        </div>
+
+
+    </div>
+</div>
