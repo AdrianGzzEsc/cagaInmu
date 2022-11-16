@@ -70,7 +70,7 @@
 
 .swiper {
     width: 100%;
-    height: 375px;
+    height: 380px;
 }
 
 .swiper-button-next {
@@ -154,31 +154,56 @@
     flex-direction: column-reverse;
 }
 
-.acContactar {
-    text-align: center !important;
-
+.ac .ac-trigger::after{
+    content: none !important;
 }
+
+.ac.is-active>.ac-header .ac-trigger::after {
+    content: none !important;
+}
+
+.acCustom .ac-trigger::after{
+    content: "⮝" !important;
+}
+
+.acCustom.is-active>.ac-header .ac-trigger::after {
+    content: "⮟" !important;
+}
+
 
 .scrollableC {
     overflow-y: auto;
-    height: calc(100vh - 282px);
-    height: calc(var(--vh, 1vh) * 100);
-
     display: flex;
     flex-direction: column;
-
-}
-
-#iframeLoad {
-    background-color: #e3f977;
-    display: flex;
-    justify-content: center;
-    border-bottom: solid;
+    height: 100%;
 }
 
 .ac-trigger {
-    border: solid !important;
-    border-color: #e3f977 !important;
+    text-align: center !important;
+    color: #e3f977 !important;
+    background-color: black !important;
+    font-family: inmu !important;
+
+}
+
+#ac-0{
+    margin-top: 0px !important;
+}
+
+.ac .ac-trigger::after{
+    content: none !important;
+}
+
+.ac.is-active>.ac-header .ac-trigger::after {
+    content: none !important;
+}
+
+.acCustom .ac-trigger::after{
+    content: "⮝" !important;
+}
+
+.acCustom.is-active>.ac-header .ac-trigger::after {
+    content: "⮟" !important;
 }
 
 #idINMU, #propiedadINMU, #direccionINMU, #ubicacionINMU  {
@@ -196,9 +221,82 @@ display: none;
 }
 
 .nombreIconos{
-    margin-left: -20px
+    display: block;
 }
 
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+}
+
+
+.center{
+    display: flex;
+      align-items: center;
+      flex-direction: column;
+    height: 0px;
+  }
+  
+  .rowChange{
+   margin-left: 10px;
+  margin-right: 10px; 
+  justify-content: space-between;
+    height: 0px;
+  }
+
+  .iconosText{
+    font-family: inmu; 
+    margin-top: 2px;
+    width: max-content;
+  }
+
+
+  #precioINMU{
+    text-align: center;
+    font-family: inmu;
+    font-size: 32px;
+    background-color: black;
+    color: #e3f977;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+  }
+
+  #iconosINMU{
+    margin-top: 13px;
+    height: 140px;
+  }
+
+  #iframeLoad, #btnTipologias {
+    background-color: black;
+    font-family: inmu;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+#recorridoV{
+    color: #e3f977 !important;
+    text-decoration: none !important;
+}
+
+#preview{
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background-color: rgba(255,255,255,0.8);
+    padding: 0px;
+    max-width: 405px;
+}
+
+a{
+    color: #e3f977;
+    text-decoration: unset;
+}
 @font-face {
 font-family: 'INMU';
 src: url('https://inmu.mx/wp-content/uploads/2022/08/Lovelo-Black.eot');

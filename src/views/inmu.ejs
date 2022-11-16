@@ -15,6 +15,8 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/casa.js"> </script>
+    <script src="/js/depa.js"> </script>
 
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -75,13 +77,10 @@
 
                 </div>
             </div>
-            <div id="preview" class="col-4 card ml-5"
-                style="max-height: 700px;background-color: rgba(255,255,255,0.8);padding: 0px;max-width: 405px;">
+            <div id="preview" class="col-4 ml-5">
 
             </div>
         </div>
-        <a id="crear" style="right:5px;background-color: #e3f977;font-family: inmu;border-color: black;"
-            class="col-6 btn btn-primary mt-2">Crear</a>
 
         <br>
         <br>
@@ -104,19 +103,21 @@
     var contactTemplate = ` <%- include ("./templates/contactTemplate") %> `
     var formTemplate = ` <%- include ("./templates/swiperTemplate") %> `
     var formTemplate2 = ` <%- include ("./templates/planosTemplate") %> `
+    var test = ` <%- include ("./templates/test") %> `
 
-    var dataFinal = { map_id: 1, 
-        infoopen: 0, 
-        approved: 1, 
-        retina: 0, 
-        type: 0, did: "", 
-        sticky: 0, 
+    var dataFinal = {
+        map_id: 1,
+        infoopen: 0,
+        approved: 1,
+        retina: 0,
+        type: 0, did: "",
+        sticky: 0,
         other_data: 'a:2:{s:10:"hover_icon";s:69:"//inmu.mx/wp-content/plugins/wp-google-maps/images/spotlight-poi2.png";s:12:"hover_retina";s:1:"0";}',
         layergroup: 0,
         lat: "",
         pic: "",
         link: "",
-        icon:"",
+        icon: "",
         lng: "",
         did: "",
     }
@@ -136,7 +137,6 @@
         }
 
     });
-
 
     $(document).on('click', '#mas', function () {
         $(formTemplate).appendTo('#content').slideDown('normal');
@@ -158,6 +158,13 @@
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
     });
 
+
+    $(document).on('click', '#Enviar', function () {
+        enviarExcel()
+    });
+
+
+
     $(document).on('click', '#menos2', function () {
         $(this).closest('[name = materiales2]').slideUp("normal", function () { $(this).remove(); });
 
@@ -176,7 +183,6 @@
             });
         }
     })
-
     function multipleExist(arr, values) {
         return values.every(value => {
             return arr.includes(value);
@@ -184,65 +190,11 @@
     }
 
 
+
     $(document).on('click', '#crear', async function () {
-        var template = '<div class="swiper mySwiper"><div class="swiper-wrapper">'
-        var categorias = []
-        var data = {}
-        $('[name = linkSwipper]').each(async function () {
-            index = $(this).index('[name = linkSwipper]')
-            if ($(this).val().includes('mp4')) {
-                template += '<div class="swiper-slide" data-swiper-autoplay="' + duration[index] + '"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '"><video class="wpgmza-embedded-media" src="' + $(this).val() + '"></video></a></div>'
-            } else {
-                template += '<div class="swiper-slide"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '" data-thumbnail="' + $(this).val() + '"><img class="wpgmza-embedded-media" src="' + $(this).val() + '"></a></div>'
-            }
-        })
 
-        template += '</div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div>'
         if ($('#nav-casa-tab').hasClass('active')) {
-            var casaCat = ["1", "9", "25", "10"]
-            categorias.push("1")
 
-            $('#nav-casa').find('[name = amenidad]').each(function () {
-                if ($(this).is(":checked"))
-                    categorias.push($(this).val())
-            })
-            if (!multipleExist(casaCat, categorias))
-                categorias.push("11")
-            //data final
-            dataFinal.category = String(categorias).replace(/[|"|]|/g, "")
-            dataFinal.baños = $('#nav-casa').find('[name = baños]').val()
-            dataFinal.metros=  $('#nav-casa').find('[name = metros]').val()
-            dataFinal.habitaciones = $('#nav-casa').find('[name = habitaciones]').val()
-            dataFinal.estacionamiento = $('#nav-casa').find('[name = estacionamiento]').val()
-            dataFinal.precioMuestra = $('#nav-casa').find('[name = precioRango]').val()
-            dataFinal.precio = $('#nav-casa').find('[name = precio]').val()
-            dataFinal.titulo = $('#nav-casa').find('[name = titulo]').val()
-            dataFinal.direccion = $('#nav-casa').find('[name = direccion]').val()
-            dataFinal.detalles = $('#nav-casa').find('[name = detalles]').val()
-
-            //
-            data.categorias = categorias
-            data.recorrido = $('#nav-casa').find('[name = recorrido]').val()
-            data.precio = $('#nav-casa').find('[name = precioRango]').val()
-            data.descripcion = $('#nav-casa').find('[name = descripcion]').val()
-
-            data.customFields = []
-      
-
-            if ($('#nav-casa').find('[name = precioRango]').val() != "")
-                data.customFields.push({ name: "Precio", value: $('#nav-casa').find('[name = precioRango]').val() })
-            else return alert('Falta Precio')
-
-            data.customFields.push({ name: "Metros", value: $('#nav-casa').find('[name = metros]').val() })
-            data.customFields.push( { name: "Estacionamiento", value: $('#nav-casa').find('[name = estacionamiento]').val() })
-            data.customFields.push( { name: "Habitaciones", value: $('#nav-casa').find('[name = habitaciones]').val() })
-            data.customFields.push( { name: "Baños", value: $('#nav-casa').find('[name = baños]').val() })
-            data.customFields.push( { name: "Antiguedad", value: $('#nav-casa').find('[name = antiguedad]').val() })
-            data.customFields.push( { name: "Pisos", value: $('#nav-casa').find('[name = pisos]').val() })
-
-
-            if ($('#nav-casa').find('[name = detalles]').val() != "")
-                data.customFields.push({ name: "Descripcion", value: $('#nav-casa').find('[name = detalles]').val() })
 
 
         } else if ($('#nav-depa-tab').hasClass('active')) {
@@ -271,47 +223,55 @@
 
         console.log(data)
 
-        if (data.recorrido != "")
-            template += '<div id="iframeLoad"><a href="' + data.recorrido + '" class="wplightbox">RECORRIDO VIRTUAL</a></div>'
 
-        template += '<div id="precioINMU" style="text-align: center;font-family: inmu;font-size: 32px;"></div>'
+    });
 
-        //Accordion detalles propiedad
-        template += '<div class="accordion-container scrollableC"><div class="ac"><h2 class="ac-header"> <button type="button" class="ac-trigger">Detalles del Inmueble</button></h2><div class="ac-panel"><div class="ac-text"></div></div></div>'
+    //$('#preview').html(test)
+    // console.log(test)
+    //testF()
 
-        //Accordion Contacto
-        template += '<div class="ac acCustom"><h2 class="ac-header"> <button type="button" class="ac-trigger acContactar">Contactar</button></h2><div class="ac-panel"><div class="ac-text" id="contactForm">Contactar</div></div></div></div>'
+    function testF() {
 
-        dataFinal.descripcion = template
-
-        $('#preview').html(template)
+        var data = {}
+        data.customFields = []
 
         var iconos = ''
-     
+
+        data.customFields.push({ name: "Descripcion", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" })
+        data.customFields.push({ name: "Precio", value: "$15,000.000" })
+        data.customFields.push({ name: "Metros", value: "182" })
+        data.customFields.push({ name: "Estacionamiento", value: "3" })
+        data.customFields.push({ name: "Habitaciones", value: "3" })
+        data.customFields.push({ name: "Baños", value: "4" })
+        data.customFields.push({ name: "Antiguedad", value: "3 años" })
+
         $('#precioINMU').html(data.customFields.filter(e => e.name === 'Precio')[0].value)
-        data.customFields.splice(0, 1)
+        data.customFields.splice(1, 1)
 
 
-
-
-        iconos += '<div class="row ml-3" style="justify-content: space-between;">'
-        for (var i = 0; i < data.customFields.length-1; i++) {
-            iconos += '<div style ="width: 120px !important;" class= "row mt-2 pt-1 pb-1" ><div class="col-3" style="display: flex; align-items: center;"> <i style ="height: 35px;width:35px;margin-top:-2px" class ="inmu' + data.customFields[i].name + '"></i><p class = "nombreIconos">'+data.customFields[i].name+'</p></div><div class="col-3 ml-3" style="display: flex; align-items: center;font-family: inmu;">' + data.customFields[i].value + '</div></div>'
+        var iconos = '<div class="row rowChange">'
+        for (var i = 1; i < data.customFields.length - 1; i++) {
+            iconos += '<div class="col center"> <i style ="height: 35px;width:35px;" class ="inmu' + data.customFields[i].name + '"></i> <p class= "iconosText">' + data.customFields[i].value + '</p></div>'
         }
         iconos += "</div>"
+        /*
         if (data.customFields.filter(e => e.name === 'Descripcion').length > 0) {
             iconos += '<div name="inmuDescripcion">' + data.customFields[data.customFields.length - 1].value + '</div>'
             data.customFields.pop()
         }
-        $('.ac-text').eq(0).append(iconos)
+        */
+        $('#iconosINMU').append(iconos)
+        $('.ac-text').eq(0).append(data.customFields[0].value)
+
 
         $('#contactForm').html(contactTemplate)
 
         $('video.wpgmza-embedded-media').attr('webkit-playsinline', '')
         $('video.wpgmza-embedded-media').attr('playsinline', '')
-        $('video.wpgmza-embedded-media').trigger('play')
         $('video.wpgmza-embedded-media').removeAttr('controls');
         $('video.wpgmza-embedded-media').attr('loop', '')
+        $('video.wpgmza-embedded-media').attr('muted', 'true')
+
         var swiper = new Swiper(".mySwiper", {
             loop: false,
             centeredSlides: true,
@@ -338,33 +298,35 @@
         });
         acc.open(0)
 
-        console.log(template)
-        console.log(data)
-        
-                fetch("/", {
-                            method: "POST",
-                            body: JSON.stringify(dataFinal),
-                            headers: {
-                            'Content-Type': 'application/json'
-                        }
-                        }).then(response => {
-                            if (response.ok) {
-        
-                                return response.json();
-                            }
-                            throw new Error(response.statusText);
-                        })
-                        .then(responseJSON => {
-        
-                            window.location.href = "/ordenes-compra/"
-                        })
-                        .catch(err => {
-        
-                            alert(err.message)
-                        })
-                        
-    });
+    }
 
+    function eliminarDiacriticos(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function enviarExcel() {
+        fetch("/", {
+            method: "POST",
+            body: JSON.stringify(dataFinal),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+            .then(responseJSON => {
+
+                alert('Se Agrego al Excel Correctamente')
+            })
+            .catch(err => {
+
+                alert(err.message)
+            })
+    }
 
 
 </script>

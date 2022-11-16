@@ -1,0 +1,125 @@
+.owl-carousel.owl-theme.wpgmza_marker_carousel {
+    background: none;
+    }
+    
+    .gm-fullscreen-control {
+    display: none !important;
+    }
+      
+    .wpgmza-description{
+      padding: 0px !important; 
+    }
+    
+    .inmuPrecioMuestra{
+      content: url(https://inmu.mx/wp-content/uploads/2022/08/precio.png); 
+    }
+    .inmuHabitaciones{
+      content: url(https://inmu.mx/wp-content/uploads/2022/08/habitaciones.png); 
+    }
+    .inmuBaños{
+      content: url(https://inmu.mx/wp-content/uploads/2022/08/banos.png); 
+    }
+    .inmuEstacionamiento{
+      content: url(https://inmu.mx/wp-content/uploads/2022/08/estacionamiento.png); 
+    }
+    .inmuMetros{
+      content: url(https://inmu.mx/wp-content/uploads/2022/08/metros.png); 
+    }
+        .swiper {
+            width: 100%;
+            height: 235px;
+          }
+    
+    .swiper-button-next {
+              visibility: hidden !important;
+    color: white !important;
+    }
+    .swiper-button-prev{
+              visibility: hidden !important;
+    color: white !important;
+    }
+    @media only screen and (min-device-width: 961px){
+    .swiper:hover .swiper-button-next, .swiper:hover .swiper-button-prev { visibility: visible !important; }
+    }
+    .swiper:hover .swiper-pagination { display: block !important; }
+    
+    
+          .swiper-button-prev:hover, .swiper-button-next:hover{
+            color: #E3FA7E !important;
+          }
+          .swiper-pagination-bullet-active{
+            background-color: #E3FA7E !important;
+          }
+    .swiper-pagination{
+    display: none;
+    }
+    
+          .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+    height: 100%
+          }
+    
+        .swiper-wrapper{
+            width: 100%;
+            height: 100%;
+          }
+          .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .swiper-slide video {
+            display: block;
+            width: 100%;
+             height: 100%;
+            object-fit: cover;
+          }
+    .markerPreview{
+      position: absolute;
+      top: -66px;
+      width: max-content;
+      background-color: rgba(255,255,255,0.8);
+        border-radius: 25px;
+    height: 60px;
+    padding-top: 8px;
+      padding-left: 10px;
+    }
+    
+    .markerChange {
+      overflow: visible !important;
+        display: flex;
+    justify-content: center;
+    
+    }
+    
+    .center{
+      display: flex;
+        align-items: center;
+        flex-direction: column;
+      height: 0px;
+    }
+    
+    .rowChange{
+     margin-left: 10px;
+    margin-right: 10px; 
+    justify-content: space-between;
+      height: 0px;
+    }
+      
+    

@@ -1,8 +1,9 @@
 <br>
+<form id="formDepa">
 <label for="titulo" class="mt-3 ">Nombre de Propiedad</label>
 <input class="form-control" type="text" name="titulo" required>
 <label for="titulo" class="mt-3 ">Dirección:</label>
-<input class="form-control" type="text" name="direccion" placeholder ="(Calle) (Numero), (Colonia)"required>
+<input class="form-control" type="text" name="direccion" placeholder="(Calle) (Numero), (Colonia)" required>
 <div class="card mt-3">
     <label for="opciones" class="ml-3 mt-2" style="font-weight: bold;" class="mt-3 ">Opciones:</label>
 
@@ -44,82 +45,121 @@
     Usar
     comas en el que se muestra</p>
 
-<label for="recorrido" class="mt-3">Link Recorrido Virtual:</label>
-<input class="form-control" type="text" name="recorrido" required>
 <label for="detalles" class="mt-3">Detalles (Storytelling):</label>
-<textarea class="form-control" type="text" name="detalles" required> </textarea>
-
-<div class="mt-3 card" name="amenidades">
-    <label for="amenidades" style="font-weight: bold;" class="mt-3 ml-3">Amenidades:</label>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="3" id="alberca">
-        <label class="form-check-label" for="flexCheckDefault">
-            Alberca
-        </label>
+<textarea class="form-control" type="text" name="detalles" required></textarea>
+<div class="row">
+    <div class="col mt-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuMetros"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="metros" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuEstacionamiento"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="estacionamiento" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuHabitaciones"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="habitaciones" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuBaños"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="baños" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="inmuAntiguedad"
+                        style="height: 35px; width: 35px;"></i></span> </span>
+            </div>
+            <input style="height: auto;" class="form-control col-6" type="number" name="antiguedad" required>
+        </div>
     </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="6" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Gimnasio
-        </label>
+    <div class="col">
+        <div class="mt-3 card" name="amenidades">
+            <label for="amenidades" style="font-weight: bold;" class="mt-3 ml-3">Amenidades:</label>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="3" id="alberca">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Alberca
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="6" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Gimnasio
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="14" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Terraza
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="13" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Salon de Juntas
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="12" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Salon de Eventos
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="8" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Pet Friendly
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="16" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Area de Mascotas
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="15" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Areas Verdes
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="17" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Cancha de Football
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="18" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Cancha de Basquetball
+                </label>
+            </div>
+            <div class="form-check ml-3">
+                <input class="form-check-input" type="checkbox" value="21" id="gimnasio" name="amenidad">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Cancha de Tennis
+                </label>
+            </div>
+    
+        </div>
     </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="14" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Terraza
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="13" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Salon de Juntas
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="12" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Salon de Eventos
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="8" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Pet Friendly
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="16" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Area de Mascotas
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="15" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Areas Verdes
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="17" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Cancha de Football
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="18" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Cancha de Basquetball
-        </label>
-    </div>
-    <div class="form-check ml-3">
-        <input class="form-check-input" type="checkbox" value="21" id="gimnasio" name="amenidad">
-        <label class="form-check-label" for="flexCheckDefault">
-            Cancha de Tennis
-        </label>
-    </div>
-
 </div>
-<label for="amenidades" style="font-weight: bold;" class="mt-3 ml-3">Planos:</label>
+
+<label for="planos" style="font-weight: bold;" class="mt-3 ml-3">Planos:</label>
 
 <div id="content2">
     <div class="card mt-2" style="margin-bottom: 10px;" name="materiales2">
@@ -186,7 +226,8 @@
                     </div>
                 </div>
             </div>
-
+            <label for="recorrido" class="mt-3">Link Recorrido Virtual:</label>
+            <input class="form-control" type="text" name="recorrido">
 
         </div>
     </div>
@@ -195,3 +236,8 @@
     <button type="button" id="mas2" class="btn btn-success btn-circle btn-lg">
         <i class="bi bi-plus-lg"></i>
 </div>
+<br><br>
+<div id="botonCrearDepa">
+    <button id="crearDepa" type="submit" style="right:5px;background-color: #e3f977;font-family: inmu;border-color: black;" class="col-6 btn btn-primary mt-2">Crear Depa</buttton>
+</div>
+</form>
