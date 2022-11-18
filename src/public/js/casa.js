@@ -22,6 +22,7 @@ $(document).on("submit", "#formCasa", function (event) {
     dataFinal.estacionamiento = $('#nav-casa').find('[name = estacionamiento]').val()
     dataFinal.precioMuestra = $('#nav-casa').find('[name = precioRango]').val()
     dataFinal.precio = $('#nav-casa').find('[name = precio]').val()
+    dataFinal.antiguedad = $('#nav-casa').find('[name = antiguedad]').val()
     dataFinal.titulo = $('#nav-casa').find('[name = titulo]').val()
     dataFinal.direccion = eliminarDiacriticos($('#nav-casa').find('[name = direccion]').val())
     dataFinal.detalles = $('#nav-casa').find('[name = detalles]').val()
@@ -48,17 +49,14 @@ $(document).on("submit", "#formCasa", function (event) {
     if (data.recorrido != "")
         template += '<div id="iframeLoad"><a href="' + data.recorrido + '" class="wplightbox">RECORRIDO VIRTUAL</a></div>'
     template += '<div class="swiper mySwiper"><div class="swiper-wrapper">'
-    $('[name = linkSwipper]').each(async function () {
-        index = $(this).index('[name = linkSwipper]')
-        if ($(this).val().includes('mp4')) {
-            template += '<div class="swiper-slide" data-swiper-autoplay="' + duration[index] + '"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '"><video class="wpgmza-embedded-media" src="' + $(this).val() + '"></video></a></div>'
-        } else if($(this).val() == '') {
-            return alert('Error: Campo Vacio en Swiper')
-        } else {
-            template += '<div class="swiper-slide"><a class="wplightbox" data-group="gallery0" href="' + $(this).val() + '" data-thumbnail="' + $(this).val() + '"><img class="wpgmza-embedded-media" src="' + $(this).val() + '"></a></div>'
 
-        }
-    })
+    for (let index = 0; index < linkSwiper.length; index++) {
+        if (linkSwiper[index].includes('mp4'))
+            template += '<div class="swiper-slide" data-swiper-autoplay="' + duration[index] + '"><a class="wplightbox" data-group="gallery0" href="' + linkSwiper[index] + '"><video class="wpgmza-embedded-media" src="' + linkSwiper[index] + '"></video></a></div>'
+        else
+            template += '<div class="swiper-slide"><a class="wplightbox" data-group="gallery0" href="' + linkSwiper[index] + '" data-thumbnail="' + linkSwiper[index] + '"><img class="wpgmza-embedded-media" src="' + linkSwiper[index] + '"></a></div>'
+    }
+
     template += '</div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div>'
 
     //Accordion detalles propiedad

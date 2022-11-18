@@ -47,7 +47,7 @@ req.body.id = parseInt(readData.data.values[readData.data.values.length -1]) + 1
         range: "Hoja 1!A:AA", //sheet name and range of cells
         valueInputOption: "USER_ENTERED", // The information will be passed according to what the usere passes in as date, number or text
         resource: {
-            values: [[req.body.id, req.body.map_id,  req.body.direccion, req.body.descripcion, req.body.pic, req.body.link, req.body.icon, req.body.lat, req.body.lng, req.body.anim, req.body.titulo, req.body.infoopen, req.body.category, req.body.approved, req.body.retina, req.body.type, req.body.did, req.body.sticky, req.body.other_data, req.body.layergroup, req.body.baños, req.body.detalles, req.body.estacionamiento,req.body.habitaciones,req.body.metros,req.body.precio,req.body.precioMuestra  ]],
+            values: [[req.body.id, req.body.map_id,  req.body.direccion, req.body.descripcion, req.body.pic, req.body.link, req.body.icon, req.body.lat, req.body.lng, req.body.anim, req.body.titulo, req.body.infoopen, req.body.category, req.body.approved, req.body.retina, req.body.type, req.body.did, req.body.sticky, req.body.other_data, req.body.layergroup, req.body.baños, req.body.detalles, req.body.estacionamiento,req.body.habitaciones,req.body.metros,req.body.precio,req.body.precioMuestra, req.body.antiguedad  ]],
         },
     });
 

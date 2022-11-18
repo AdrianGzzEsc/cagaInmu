@@ -129,6 +129,33 @@
         })
     })
 
+    var linkSwiper = []
+    $(document).on('change', '#linkSwipper', function (e) {
+        var links = $(this).val().split('\n')
+        duration = []
+        linkSwiper = links.filter(function (event) {
+            return event.includes('http');
+        });
+
+        for (let i = 0; i < linkSwiper.length; i++) {
+            if (linkSwiper[i].includes('mp4')) {
+                $('#myvid').attr("src", linkSwiper[i])
+                myvid.addEventListener('durationchange', function () {
+                    duration[i] = String(myvid.duration).replace(".", "")
+                    console.log(duration)
+                });
+            }
+        }
+
+        if (linkSwiper.length > 0) {
+            alert('Links Cargados Correctamente')
+        } else {
+            alert('Error: No se cargaron los links correctamente')
+        }
+
+
+    })
+
     $(document).on('click', '.ac-trigger', function (e) {
         if (!$(this).hasClass("acContactar")) {
 
@@ -173,6 +200,7 @@
     //Handler de videos para agregar su duracion
     var myvid = document.getElementById('myvid');
     var duration = []
+
     $(document).on('change', '[name = linkSwipper]', async function () {
         index = $(this).index('[name = linkSwipper]')
         if ($(this).val().includes('mp4')) {
@@ -183,6 +211,8 @@
             });
         }
     })
+
+
     function multipleExist(arr, values) {
         return values.every(value => {
             return arr.includes(value);
